@@ -27,6 +27,7 @@ function Hero() {
                             src="/mantiya.png"
                             alt="Graduation"
                             className="img-fluid rounded-4 shadow"
+                            style={{ maxHeight: '700px', width: 'auto' }}
                         />
                     </div>
 
