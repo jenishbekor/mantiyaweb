@@ -24,7 +24,7 @@ function Hero() {
 
                     <div className="col-lg-6 mt-4 mt-lg-0">
                         <img
-                            src="src/assets/mantiya.png"
+                            src="/mantiya.png"
                             alt="Graduation"
                             className="img-fluid rounded-4 shadow"
                         />
