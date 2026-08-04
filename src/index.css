@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.hero-section {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
