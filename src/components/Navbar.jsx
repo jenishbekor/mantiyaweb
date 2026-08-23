@@ -19,25 +19,25 @@ function Navbar() {
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
                             <a className="nav-link" href="#home">
-                                Башкы бет
+                                Главная страница
                             </a>
                         </li>
 
                         <li className="nav-item">
                             <a className="nav-link" href="#robes">
-                                Мантиялар
+                                Мантии
                             </a>
                         </li>
 
                         <li className="nav-item">
                             <a className="nav-link" href="#how">
-                                Кантип иштейт?
+                                Как заказать?
                             </a>
                         </li>
 
                         <li className="nav-item">
                             <a className="nav-link" href="#contact">
-                                Байланыш
+                                Контакт
                             </a>
                         </li>
                     </ul>
