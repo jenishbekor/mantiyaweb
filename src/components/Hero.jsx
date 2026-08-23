@@ -6,19 +6,18 @@ function Hero() {
 
                     <div className="col-lg-6">
                         <h1 className="display-4 fw-bold">
-                            Сиздин өзгөчө күнүңүз
+                            Запоминающийся выпускной
                         </h1>
 
                         <p className="lead mt-3">
-                            Бүтүрүү аземи үчүн сапаттуу жана стилдүү
-                            мантияларды ижарага алыңыз.
+                            В честь выпускного предлагаем качественные и стильные мантии
                         </p>
 
                         <a
                             href="#robes"
                             className="btn btn-success btn-lg mt-3"
                         >
-                            Мантияларды көрүү
+                            Просмотр мантии
                         </a>
                     </div>
 
