@@ -16,7 +16,7 @@ function Hero() {
 
                         <a
                             href="#robes"
-                            className="btn btn-dark btn-lg mt-3"
+                            className="btn btn-success btn-lg mt-3"
                         >
                             Мантияларды көрүү
                         </a>
@@ -27,7 +27,7 @@ function Hero() {
                             src="/mantiya.png"
                             alt="Graduation"
                             className="img-fluid rounded-4 shadow"
-                            style={{ maxHeight: '700px', width: 'auto' }}
+                            style={{ maxHeight: '500px', width: 'auto' }}
                         />
                     </div>
 
