@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Hero() {
     return (
         <section id="home" className="hero-section">
@@ -13,12 +15,12 @@ function Hero() {
                             В честь выпускного предлагаем качественные и стильные мантии
                         </p>
 
-                        <a
-                            href="#robes"
+                        <Link
+                            to="/robes"
                             className="btn btn-success btn-lg mt-3"
                         >
                             Просмотр мантии
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="col-lg-6 mt-4 mt-lg-0">
