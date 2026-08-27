@@ -3,9 +3,9 @@ import RobeCard from './RobeCard'
 function Catalog() {
     const robes = [
         {
-            image: '/mantiya_blue_white.png',
-            title: 'Темно синий с белым',
-            description: 'Классическая черная мантия с зеленой отделкой.',
+            image: '/blue_with_yellow.png',
+            title: 'Синяя с желтой полоской',
+            description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
         },
         {
@@ -15,20 +15,26 @@ function Catalog() {
             price: '500 сом / день'
         },
         {
-            image: '/mantiya3.png',
+            image: '/dark_blue_with_b_yellow.png',
             title: 'Тёмно синяя с жёлтым широкая полоска',
             description: 'Стильная мантия с яркой красной отделкой.',
             price: '500 сом / день'
         },
         {
-            image: '/mantiya4.png',
-            title: 'Темно синяя c голубым',
+            image: '/dark_blue_with_yellow.png',
+            title: 'Темно синяя c желтым',
             description: 'Классическая мантия с синей отделкой.',
             price: '500 сом / день'
         },
         {
-            image: '/mantiya5.png',
-            title: 'Бардовая с желтым',
+            image: '/mantiya_blue_white.png',
+            title: 'Темно синий с белым',
+            description: 'Классическая черная мантия с зеленой отделкой.',
+            price: '500 сом / день'
+        },
+        {
+            image: '/blue_elegant_with_white.png',
+            title: 'Синий элегант с белым',
             description: 'Минималистичная черная мантия для выпускного.',
             price: '500 сом / день'
         },
