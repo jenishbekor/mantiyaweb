@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
 
+    container_name: mantiyaweb-test
     restart: unless-stopped
 
     networks:

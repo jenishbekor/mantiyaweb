@@ -28,9 +28,12 @@ jobs:
             cd /opt/apps/mantiyaweb-test
 
             echo "Pulling latest nuradil branch..."
-            git fetch origin
+            git fetch origin nuradil
             git checkout nuradil
             git reset --hard origin/nuradil
+            
+            echo "Stopping old containers ... "
+            docker compose -f test-compose.yml down --remove-orphans
 
             echo "Building Docker image..."
             docker compose -f test-compose.yml build
