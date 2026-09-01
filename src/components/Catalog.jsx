@@ -57,13 +57,19 @@ function Catalog() {
             price: '500 сом / день'
         },
         {
-            image: '/mantiya8.png',
-            title: 'Березовая',
+            image: '/green.png',
+            title: 'Изумрудная с золотым',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
         },
         {
-            image: '/mantiya9.png',
+            image: '/black_with_gold.png',
+            title: 'Черная с золотым',
+            description: 'Премиальная модель с аккуратной декоративной отделкой.',
+            price: '500 сом / день'
+        },
+        {
+            image: '/black_with_brown.png',
             title: 'Черная с бордовым',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
