@@ -9,7 +9,7 @@ function Catalog() {
             price: '500 сом / день'
         },
         {
-            image: '/mantiya_blue_white.png',
+            image: '/dark_blue_with_s_yellow.png',
             title: 'Тёмно синяя с жёлтым тонкая полоска',
             description: 'Элегантная черная мантия с золотой отделкой.',
             price: '500 сом / день'
@@ -39,14 +39,20 @@ function Catalog() {
             price: '500 сом / день'
         },
         {
-            image: '/mantiya6.png',
-            title: 'Бардовая с белым',
+            image: '/purple.png',
+            title: 'Фиолетовая с желтым',
+            description: 'Минималистичная черная мантия для выпускного.',
+            price: '500 сом / день'
+        },
+        {
+            image: '/burgundy_with_yellow.png',
+            title: 'Бардовая с желтым',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
         },
         {
-            image: '/mantiya7.png',
-            title: 'Изумрудная',
+            image: '/burgundy_with_white.png',
+            title: 'Бардовая с белым',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
         },
