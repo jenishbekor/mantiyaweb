@@ -46,6 +46,8 @@ jobs:
 
             echo "Testing application..."
             docker exec mantiyaweb-test wget -qO- http://localhost > /dev/null
+            
+            docker image prune -f
 
             echo "========================================"
             echo "Deployment successful!"
