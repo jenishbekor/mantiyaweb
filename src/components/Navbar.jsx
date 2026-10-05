@@ -21,19 +21,19 @@ function Navbar() {
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
                             <Link className="nav-link" to="/">
-                                Главная страница
+                                Главная
                             </Link>
                         </li>
 
                         <li className="nav-item">
-                            <Link className="nav-link" to="/robes">
-                                Мантии
+                            <Link className="nav-link" to="/catalog">
+                                Каталог
                             </Link>
                         </li>
 
                         <li className="nav-item">
                             <a className="nav-link" href="#how">
-                                Как заказать?
+                                Заказать
                             </a>
                         </li>
 
