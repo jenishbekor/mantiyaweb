@@ -111,20 +111,20 @@ function Catalog() {
             price: '500 сом / день'
         },
         {
-            image: 'mantiya16.png',
-            title: 'Фиолетовая с желтым',
+            image: 'black_with_brown_l.png',
+            title: 'Черная с бордовой полоской',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
         },
         {
-            image: 'mantiya17.png',
-            title: 'Бирюзовая с белым',
+            image: 'dark_blue_with_yellow_k.png',
+            title: 'Темно синяя детская',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
         },
         {
-            image: 'mantiya18.png',
-            title: 'Синяя с белым',
+            image: 'burgundy_with_yellow_k.png',
+            title: 'Бардовая детская',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
         }

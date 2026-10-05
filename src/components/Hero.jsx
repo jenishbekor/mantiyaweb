@@ -16,7 +16,7 @@ function Hero() {
                         </p>
 
                         <Link
-                            to="/robes"
+                            to="/catalog"
                             className="btn btn-success btn-lg mt-3"
                         >
                             Просмотр мантии
