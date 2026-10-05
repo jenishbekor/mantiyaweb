@@ -1,0 +1,55 @@
+name: Deploy Test
+
+on:
+  push:
+    branches:
+      - nuradil
+
+jobs:
+  deploy:
+    name: Deploy nuradil to test server
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            set -e
+
+            echo "========================================"
+            echo "Starting deployment"
+            echo "========================================"
+
+            cd /opt/apps/mantiyaweb-test
+
+            echo "Pulling latest nuradil branch..."
+            git fetch origin nuradil
+            git checkout nuradil
+            git reset --hard origin/nuradil
+            
+            echo "Stopping old containers ... "
+            docker compose -f test-compose.yml down --remove-orphans
+
+            echo "Building Docker image..."
+            docker compose -f test-compose.yml build
+
+            echo "Starting containers..."
+            docker compose -f test-compose.yml up -d
+
+            echo "Checking container..."
+            docker ps --filter "name=mantiyaweb-test"
+
+            echo "Testing application..."
+            docker exec mantiyaweb-test wget -qO- http://localhost > /dev/null
+            
+            docker image prune -f
+
+            echo "========================================"
+            echo "Deployment successful!"
+            echo "https://test.mantiya.kg"
+            echo "========================================"

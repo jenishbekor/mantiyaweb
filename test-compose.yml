@@ -1,0 +1,16 @@
+services:
+
+  mantiyaweb-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: mantiyaweb-test
+    restart: unless-stopped
+
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
