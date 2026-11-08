@@ -1,0 +1,38 @@
+﻿.rental-home { background: #fff; padding: 22px 0 4px; }
+.rental-home .container { max-width: 1440px; }
+.home-hero { position: relative; display: flex; align-items: center; min-height: 440px; overflow: hidden; border-radius: 17px; background: #efebfa; }
+.home-hero-copy { position: relative; z-index: 2; width: 47%; padding: 46px 32px; }
+.home-eyebrow { display: block; color: #6d29e2; font-size: 10px; font-weight: 700; letter-spacing: 3px; }
+.home-hero h1 { font-size: clamp(56px, 6vw, 82px); line-height: 1; font-weight: 800; letter-spacing: -4px; margin: 16px 0; }
+.home-hero h2 { font-size: 21px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
+.home-lead { font-size: 14px; line-height: 1.8; color: #555166; margin-bottom: 24px; }
+.home-hero-visual { position: absolute; inset: 0 13% 0 43%; background: #e4dcf2; }
+.home-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; opacity: 0; transition: opacity .5s; }
+.home-slide.is-active { opacity: 1; }
+.home-hero-visual::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, #efebfa, transparent 18%, transparent 88%, #efebfa); }
+.home-hero-script { position: absolute; right: 2%; top: 28%; font-family: Georgia, serif; font-style: italic; font-size: 30px; line-height: 1.15; transform: rotate(-7deg); }
+.home-slider-controls { position: absolute; z-index: 3; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; background: #ffffffed; border-radius: 30px; padding: 6px 10px; }
+.home-slider-controls > button { border: 0; background: transparent; color: #6d29e2; width: 30px; height: 30px; cursor: pointer; }
+.home-slider-dots { display: flex; gap: 7px; }
+.home-slider-dots button { border: 0; padding: 0; width: 8px; height: 8px; background: #c5b9db; border-radius: 20px; cursor: pointer; }
+.home-slider-dots button.is-active { width: 23px; background: #6d29e2; }
+.home-benefits { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; margin: 20px 0 24px; }
+.home-benefits article { display: flex; align-items: center; justify-content: center; gap: 14px; min-height: 76px; padding: 12px; background: #f4f1fb; border-radius: 15px; }
+.home-benefits article > span { font-size: 30px; }
+.home-benefits strong, .home-benefits small { display: block; }
+.home-benefits strong { font-size: 13px; }
+.home-benefits small { font-size: 11px; color: #666174; margin-top: 5px; }
+.home-promo { display: grid; grid-template-columns: 1.4fr .65fr 1fr; background: #eee8fa; border-radius: 14px; overflow: hidden; margin-bottom: 28px; }
+.home-promo-copy { display: flex; align-items: center; gap: 14px; padding: 22px; color: white; background: linear-gradient(110deg, #56219a, #a15ce4); }
+.home-promo-copy > span { font-size: 42px; }
+.home-promo h2 { font-size: 22px; font-weight: 700; margin: 0 0 5px; }
+.home-promo p { font-size: 12px; margin: 0; }
+.home-promo-copy > a { margin-left: auto; white-space: nowrap; border-radius: 10px; padding: 12px; color: #171721; background: white; font-size: 12px; font-weight: 700; text-decoration: none; }
+.home-promo > img { width: 100%; height: 100%; max-height: 160px; object-fit: cover; }
+.home-promo-about { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 20px; color: #171721; text-decoration: none; }
+.home-promo-about > span { display: grid; place-items: center; background: #6d29e2; color: white; width: 42px; height: 42px; border-radius: 13px; font-size: 30px; flex-shrink: 0; }
+.home-promo-about strong, .home-promo-about small { display: block; font-size: 12px; }
+.home-promo-about small { color: #6d29e2; margin-top: 6px; }
+@media (max-width: 1100px) { .home-benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); } .home-promo { grid-template-columns: 1.5fr 1fr; } .home-promo > img { display: none; } .home-hero-script { display: none; } .home-hero-visual { right: 0; } }
+@media (max-width: 767px) { .rental-home { padding-top: 16px; } .home-hero { flex-direction: column; align-items: stretch; } .home-hero-copy { width: 100%; padding: 30px 24px; } .home-hero h1 { font-size: 60px; } .home-hero h2 { font-size: 19px; } .home-hero-visual { position: relative; inset: auto; height: 340px; } .home-hero-visual::after { background: linear-gradient(180deg, #efebfa, transparent 18%); } .home-benefits article { justify-content: flex-start; } .home-promo { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .home-benefits { grid-template-columns: 1fr; } .home-promo-copy { flex-wrap: wrap; } .home-promo-copy > a { margin-left: 0; } }

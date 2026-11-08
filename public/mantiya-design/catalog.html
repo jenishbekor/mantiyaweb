@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StyleShop | Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="topbar-social">
+        <a href="https://instagram.com/styleshop.kg" target="_blank" rel="noreferrer" aria-label="Instagram">◎ <span>@styleshop.kg</span></a>
+        <span class="top-divider">|</span>
+        <a href="https://wa.me/996700123456" target="_blank" rel="noreferrer" aria-label="WhatsApp">◉ <span>+996 700 123 456</span></a>
+      </div>
+      <div class="topbar-note">Free shipping on orders over 5,000 сом <span>|</span> Kyrgyzstan</div>
+    </div>
+
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="StyleShop home">
+        <span class="brand-icon">♧</span>
+        <span><strong>StyleShop</strong><small>Wear Your Style</small></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav" id="mainNav">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link active" href="catalog.html">Catalog</a>
+        <a class="nav-link" href="order.html">Order</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="search-box">
+          <input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products" />
+          <span>⌕</span>
+        </label>
+        <button class="action-btn login-btn" id="loginBtn" type="button"><span>♙</span> Login</button>
+        <button class="icon-btn" type="button" aria-label="Wishlist">♡</button>
+        <button class="icon-btn cart-trigger" id="cartToggle" type="button" aria-label="Shopping cart">🛒<b id="cartCount">0</b></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="page-hero-copy">
+          <p class="eyebrow">New arrivals</p>
+          <h1>Catalog</h1>
+          <p>Explore curated fashion essentials for everyday style, workdays, and weekend escapes.</p>
+        </div>
+        <div class="page-hero-panel">
+          <span>Spring / Summer</span>
+          <strong>Fresh looks for every moment.</strong>
+        </div>
+      </section>
+
+      <section class="page-shell">
+        <div class="category-chips">
+          <button class="category-chip selected" data-category="All">All</button>
+          <button class="category-chip" data-category="Men">Men</button>
+          <button class="category-chip" data-category="Women">Women</button>
+          <button class="category-chip" data-category="Shoes">Shoes</button>
+          <button class="category-chip" data-category="Accessories">Accessories</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+          <article class="product-card" data-name="Classic Overshirt" data-category="Men">
+            <div class="product-photo photo-shirt"><button class="heart" aria-label="Add to wishlist">♡</button></div>
+            <div class="product-info"><h3>Classic Overshirt</h3><p>Men · Shirts</p><div class="price-row"><strong>3,200 сом</strong><button class="add-cart" data-product="Classic Overshirt" data-price="3200" aria-label="Add Classic Overshirt to cart">🛒</button></div></div>
+          </article>
+          <article class="product-card" data-name="Alina Knit Set" data-category="Women">
+            <div class="product-photo photo-sweater"><button class="heart" aria-label="Add to wishlist">♡</button></div>
+            <div class="product-info"><h3>Alina Knit Set</h3><p>Women · Knitwear</p><div class="price-row"><strong>4,280 сом</strong><button class="add-cart" data-product="Alina Knit Set" data-price="4280" aria-label="Add Alina Knit Set to cart">🛒</button></div></div>
+          </article>
+          <article class="product-card" data-name="Luna Dress" data-category="Women">
+            <div class="product-photo photo-dress"><span class="discount">-10%</span><button class="heart" aria-label="Add to wishlist">♡</button></div>
+            <div class="product-info"><h3>Luna Dress</h3><p>Women · Dresses</p><div class="price-row"><strong>5,390 сом</strong><del>5,990 сом</del><button class="add-cart" data-product="Luna Dress" data-price="5390" aria-label="Add Luna Dress to cart">🛒</button></div></div>
+          </article>
+          <article class="product-card" data-name="City Backpack" data-category="Accessories">
+            <div class="product-photo photo-bag"><button class="heart" aria-label="Add to wishlist">♡</button></div>
+            <div class="product-info"><h3>City Backpack</h3><p>Accessories · Bags</p><div class="price-row"><strong>2,490 сом</strong><button class="add-cart" data-product="City Backpack" data-price="2490" aria-label="Add Backpack to cart">🛒</button></div></div>
+          </article>
+          <article class="product-card" data-name="White Sneakers" data-category="Shoes">
+            <div class="product-photo photo-shoes"><span class="discount">-25%</span><button class="heart" aria-label="Add to wishlist">♡</button></div>
+            <div class="product-info"><h3>White Sneakers</h3><p>Unisex · Shoes</p><div class="price-row"><strong>3,740 сом</strong><del>4,990 сом</del><button class="add-cart" data-product="White Sneakers" data-price="3740" aria-label="Add Sneakers to cart">🛒</button></div></div>
+          </article>
+          <article class="product-card" data-name="Sunset Blazer" data-category="Men">
+            <div class="product-photo photo-sunset"><button class="heart" aria-label="Add to wishlist">♡</button></div>
+            <div class="product-info"><h3>Sunset Blazer</h3><p>Men · Formal</p><div class="price-row"><strong>6,590 сом</strong><button class="add-cart" data-product="Sunset Blazer" data-price="6590" aria-label="Add Sunset Blazer to cart">🛒</button></div></div>
+          </article>
+        </div>
+        <p class="empty-state" id="emptyState" hidden>No products found. Try another search.</p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand"><strong>StyleShop</strong><p>Look good. Feel good.</p></div>
+      <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="catalog.html">Catalog</a><a href="order.html">Order</a><a href="contact.html">Contact</a></div>
+      <div><h4>Contact Us</h4><a href="tel:+996700123456">+996 700 123 456</a><a href="https://wa.me/996700123456">WhatsApp</a><a href="https://instagram.com/styleshop.kg">@styleshop.kg</a><span>Bishkek, Kyrgyzstan</span></div>
+      <div><h4>Stay in touch</h4><p>Follow us for new arrivals and offers.</p><form id="subscribeForm"><input type="email" placeholder="Your email address" required /><button type="submit">→</button></form></div>
+      <div class="copyright">© 2026 StyleShop. All rights reserved.</div>
+    </footer>
+
+    <div class="cart-panel" id="cartPanel" aria-hidden="true">
+      <div class="cart-header"><h2>Your Cart</h2><button id="closeCart" aria-label="Close cart">×</button></div>
+      <div id="cartItems" class="cart-items"><p class="cart-empty">Your cart is empty.</p></div>
+      <div class="cart-total"><strong>Total</strong><strong id="cartTotal">0 сом</strong></div>
+      <a class="primary-btn checkout-btn" href="order.html">Continue to Order →</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="modal-close" id="closeLogin" aria-label="Close">×</button>
+      <h2 id="loginTitle">Welcome to StyleShop</h2>
+      <p>Login feature can be connected to your customer account system.</p>
+      <form id="loginForm"><input type="email" placeholder="Email address" required /><input type="password" placeholder="Password" required /><button class="primary-btn" type="submit">Login</button></form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
