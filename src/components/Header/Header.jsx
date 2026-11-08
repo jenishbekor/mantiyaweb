@@ -11,6 +11,16 @@ function Header() {
 
     return (
         <header className="site-header">
+            <div className="header-topbar">
+                <div className="container header-topbar-inner">
+                    <a href="https://www.instagram.com/mantiya_na_prokat_bishkek/" target="_blank" rel="noopener noreferrer">
+                        <span aria-hidden="true">◎</span> @mantiya_na_prokat_bishkek
+                    </a>
+                    <span className="header-topbar-divider" aria-hidden="true">|</span>
+                    <a href="tel:+996700437733"><span aria-hidden="true">☎</span> +996 700 437 733</a>
+                    <div className="header-topbar-note">Бесплатная доставка от 15 шт. <span aria-hidden="true">|</span> Кыргызстан</div>
+                </div>
+            </div>
             <div className="container header-inner">
                 <Link to="/" className="brand" onClick={close} aria-label="Мантия — главная">
                     <span className="brand-symbol" aria-hidden="true">м.</span>

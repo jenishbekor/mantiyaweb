@@ -18,3 +18,12 @@
 .header-nav > a:not(.rental-button) { font-size: 14px; font-weight: 600; }
 .header-nav > a.active:not(.rental-button) { box-shadow: 0 3px var(--color-primary); }
 .header-inner { max-width: 1360px; }
+.header-topbar { background: #17171e; color: #fff; }
+.header-topbar-inner { max-width: 1360px; min-height: 42px; display: flex; align-items: center; flex-wrap: wrap; gap: 15px; padding-top: 8px; padding-bottom: 8px; }
+.header-topbar a { display: inline-flex; align-items: center; gap: 8px; color: #efeaff; text-decoration: none; font-size: 13px; }
+.header-topbar a:hover { color: #fff; text-decoration: underline; }
+.header-topbar-divider { color: #8a8a96; }
+.header-topbar-note { margin-left: auto; color: #e9e9ef; font-size: 13px; }
+.header-topbar-note > span { margin: 0 12px; color: #8a8a96; }
+@media (max-width: 767px) { .header-topbar-note { flex-basis: 100%; margin-left: 0; font-size: 11px; } }
+@media (max-width: 575px) { .header-topbar-inner { gap: 6px 12px; } .header-topbar a { font-size: 11px; } .header-topbar-divider { display: none; } }
