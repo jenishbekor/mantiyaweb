@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Button from '../Button/Button'
 import './OrderModal.css'
+import { readCart, saveCart } from '../../cart'
 
 // размеры по умолчанию, если у мантии свой список не указан
 const SIZES = ['42', '44', '46', '48', '50', '52', '54', '56']
@@ -57,8 +58,7 @@ function OrderModal({ robe, onClose }) {
     }, [onClose])
 
     const handleSubmit = () => {
-        console.log({ robe: robe.title, size, scarf: color.name })
-        alert(`Заказ: ${robe.title}, размер ${size}, шарф: ${color.name}`)
+        saveCart([...readCart(), { title: robe.title, image: robe.image, size, scarf: color.name }])
         onClose()
     }
 
@@ -139,7 +139,7 @@ function OrderModal({ robe, onClose }) {
                                 disabled={!size || !color}
                                 onClick={handleSubmit}
                             >
-                                Подтвердить заказ
+                                Добавить в корзину
                             </Button>
                         </div>
                     </div>
