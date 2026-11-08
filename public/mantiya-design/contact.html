@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StyleShop | Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="topbar-social">
+        <a href="https://instagram.com/styleshop.kg" target="_blank" rel="noreferrer" aria-label="Instagram">◎ <span>@styleshop.kg</span></a>
+        <span class="top-divider">|</span>
+        <a href="https://wa.me/996700123456" target="_blank" rel="noreferrer" aria-label="WhatsApp">◉ <span>+996 700 123 456</span></a>
+      </div>
+      <div class="topbar-note">Free shipping on orders over 5,000 сом <span>|</span> Kyrgyzstan</div>
+    </div>
+
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="StyleShop home">
+        <span class="brand-icon">♧</span>
+        <span><strong>StyleShop</strong><small>Wear Your Style</small></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <nav class="nav" id="mainNav">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="catalog.html">Catalog</a>
+        <a class="nav-link" href="order.html">Order</a>
+        <a class="nav-link active" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <label class="search-box">
+          <input id="searchInput" type="search" placeholder="Search products..." aria-label="Search products" />
+          <span>⌕</span>
+        </label>
+        <button class="action-btn login-btn" id="loginBtn" type="button"><span>♙</span> Login</button>
+        <button class="icon-btn" type="button" aria-label="Wishlist">♡</button>
+        <button class="icon-btn cart-trigger" id="cartToggle" type="button" aria-label="Shopping cart">🛒<b id="cartCount">0</b></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="page-hero-copy">
+          <p class="eyebrow">Get in touch</p>
+          <h1>Contact</h1>
+          <p>We are always ready to help with sizing advice, order updates, and style recommendations.</p>
+        </div>
+        <div class="page-hero-panel">
+          <span>Support</span>
+          <strong>Mon–Sat • 9:00–19:00</strong>
+        </div>
+      </section>
+
+      <section class="contact-grid">
+        <div class="contact-panel">
+          <h3>Contact information</h3>
+          <div class="contact-list">
+            <div class="contact-item"><strong>Phone</strong><a href="tel:+996700123456">+996 700 123 456</a></div>
+            <div class="contact-item"><strong>Email</strong><a href="mailto:hello@styleshop.kg">hello@styleshop.kg</a></div>
+            <div class="contact-item"><strong>Instagram</strong><a href="https://instagram.com/styleshop.kg" target="_blank" rel="noreferrer">@styleshop.kg</a></div>
+            <div class="contact-item"><strong>Location</strong><span>Bishkek, Kyrgyzstan</span></div>
+          </div>
+
+          <div class="faq-list">
+            <div class="faq-item"><strong>Need a sizing guide?</strong><p>Send us your preferred fit and we will recommend the best styling options.</p></div>
+            <div class="faq-item"><strong>Do you ship outside Bishkek?</strong><p>Yes. We deliver across Kyrgyzstan and selected international destinations.</p></div>
+          </div>
+        </div>
+
+        <div class="contact-form-panel">
+          <h3>Send a message</h3>
+          <form id="contactForm">
+            <input type="text" placeholder="Your name" required />
+            <input type="email" placeholder="Email address" required />
+            <input type="tel" placeholder="Phone" />
+            <textarea rows="4" placeholder="How can we help?" required></textarea>
+            <button class="primary-btn" type="submit">Send message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand"><strong>StyleShop</strong><p>Look good. Feel good.</p></div>
+      <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="catalog.html">Catalog</a><a href="order.html">Order</a><a href="contact.html">Contact</a></div>
+      <div><h4>Contact Us</h4><a href="tel:+996700123456">+996 700 123 456</a><a href="https://wa.me/996700123456">WhatsApp</a><a href="https://instagram.com/styleshop.kg">@styleshop.kg</a><span>Bishkek, Kyrgyzstan</span></div>
+      <div><h4>Stay in touch</h4><p>Follow us for new arrivals and offers.</p><form id="subscribeForm"><input type="email" placeholder="Your email address" required /><button type="submit">→</button></form></div>
+      <div class="copyright">© 2026 StyleShop. All rights reserved.</div>
+    </footer>
+
+    <div class="cart-panel" id="cartPanel" aria-hidden="true">
+      <div class="cart-header"><h2>Your Cart</h2><button id="closeCart" aria-label="Close cart">×</button></div>
+      <div id="cartItems" class="cart-items"><p class="cart-empty">Your cart is empty.</p></div>
+      <div class="cart-total"><strong>Total</strong><strong id="cartTotal">0 сом</strong></div>
+      <a class="primary-btn checkout-btn" href="order.html">Continue to Order →</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="modal" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="modal-close" id="closeLogin" aria-label="Close">×</button>
+      <h2 id="loginTitle">Welcome to StyleShop</h2>
+      <p>Login feature can be connected to your customer account system.</p>
+      <form id="loginForm"><input type="email" placeholder="Email address" required /><input type="password" placeholder="Password" required /><button class="primary-btn" type="submit">Login</button></form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

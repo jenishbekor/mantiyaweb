@@ -1,0 +1,20 @@
+.site-header { background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
+.header-inner { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--color-ink); }
+.brand:hover { color: var(--color-primary); }
+.brand-symbol { display: grid; place-items: center; width: 43px; height: 43px; background: var(--color-primary); color: #f1f0e5; font-family: Georgia, serif; font-size: 31px; border-radius: 12px 12px 12px 2px; }
+.brand-name { display: grid; gap: 3px; font-family: Georgia, serif; font-size: 25px; line-height: 1.1; }
+.brand-name > span { font-family: Arial, sans-serif; font-size: 7px; letter-spacing: 1.4px; color: var(--color-muted); }
+.header-nav { display: flex; align-items: center; gap: 30px; }
+.header-nav > a:not(.rental-button) { font-size: 13px; color: var(--color-muted); text-decoration: none; padding: 10px 0; }
+.header-nav > a.active:not(.rental-button), .header-nav > a:hover:not(.rental-button) { color: var(--color-primary); }
+.header-nav > a.active:not(.rental-button) { box-shadow: 0 1px var(--color-primary); }
+.header-toggle { display: none; border: 1px solid var(--color-border); background: transparent; border-radius: 7px; padding: 9px 12px; color: var(--color-primary); font-size: 12px; }
+@media (max-width: 767px) { .header-inner { min-height: 76px; flex-wrap: wrap; gap: 0; } .header-toggle { display: block; } .header-nav { display: none; flex-basis: 100%; align-items: stretch; padding: 14px 0 20px; gap: 8px; } .header-nav.is-open { display: flex; flex-direction: column; } .header-nav .header-order { align-self: start; margin-top: 8px; } .header-nav > a.active:not(.rental-button) { box-shadow: none; font-weight: 700; } }
+.site-header { background: white; box-shadow: 0 3px 18px #17172a0f; }
+.brand-symbol { border-radius: 12px; color: white; }
+.brand-name { font-family: Arial, sans-serif; font-weight: 800; font-size: 27px; letter-spacing: -1px; }
+.brand-name > span { letter-spacing: 1px; font-weight: 400; }
+.header-nav > a:not(.rental-button) { font-size: 14px; font-weight: 600; }
+.header-nav > a.active:not(.rental-button) { box-shadow: 0 3px var(--color-primary); }
+.header-inner { max-width: 1360px; }

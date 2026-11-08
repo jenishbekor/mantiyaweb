@@ -1,30 +1,40 @@
-import RobeCard from './RobeCard'
+import { useState } from 'react'
+import RobeCard from '../../components/RobeCard/RobeCard'
+import OrderModal from '../../components/OrderModal/OrderModal'
+import './Catalog.css'
 
 function Catalog() {
+    const [selectedRobe, setSelectedRobe] = useState(null)
+    const [filter, setFilter] = useState('all')
     const robes = [
         {
             image: 'blue_with_yellow.png',
             title: 'Синяя с золотой полоской',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
-            price: '500 сом / день'
+            price: '500 сом / день',
+            sizes: ['44', '46', '48', '50'],
+            scarfColors: ['Золотой', 'Жёлтый']
         },
         {
             image: 'dark_blue_with_s_yellow.png',
             title: 'Тёмно-синяя с тонкими золотыми полосками',
             description: 'Элегантная черная мантия с золотой отделкой.',
-            price: '500 сом / день'
+            price: '500 сом / день',
+            scarfColors: ['Золотой', 'Жёлтый']
         },
         {
             image: 'dark_blue_with_b_yellow.png',
             title: 'Тёмно синяя с широкими золотыми полосками',
             description: 'Стильная мантия с яркой красной отделкой.',
-            price: '500 сом / день'
+            price: '500 сом / день',
+            scarfColors: ['Золотой', 'Жёлтый']
         },
         {
             image: 'dark_blue_with_yellow.png',
             title: 'Темно синяя c желтыми полосками',
             description: 'Классическая мантия с синей отделкой.',
-            price: '500 сом / день'
+            price: '500 сом / день',
+            scarfColors: ['Золотой', 'Жёлтый']
         },
         {
             image: 'mantiya_blue_white.png',
@@ -130,38 +140,46 @@ function Catalog() {
         }
     ]
 
+    const categories = [
+        { id: 'all', label: 'Все мантии' },
+        { id: 'blue', label: 'Синие' },
+        { id: 'black', label: 'Чёрные' },
+        { id: 'color', label: 'Цветные' },
+        { id: 'kids', label: 'Детские' },
+    ]
+    const filteredRobes = robes.filter((robe) => {
+        const isKids = robe.image.endsWith('_k.png')
+        if (filter === 'all') return true
+        if (filter === 'kids') return isKids
+        if (filter === 'blue') return !isKids && robe.image.includes('blue')
+        if (filter === 'black') return robe.image.startsWith('black')
+        return !isKids && !robe.image.includes('blue') && !robe.image.startsWith('black')
+    })
+
     return (
-        <section id="robes" className="py-5">
+        <main id="robes" className="rental-catalog">
             <div className="container">
-
-                <div className="text-center mb-5">
-                    <h1 className="display-5 fw-bold">
-                        Каталог мантии
-                    </h1>
-
-                    <p className="text-muted">
-                        Выберите подходящую мантию для вашего выпускного
-                    </p>
+                <div id="collection" className="catalog-collection-heading">
+                    <div><span className="catalog-eyebrow">НАЙДИТЕ СВОЙ ОБРАЗ</span><h2>Коллекция мантий<span> / {robes.length}</span></h2></div>
+                    <p>Разные оттенки. Один незабываемый день.</p>
                 </div>
-
-                <div className="row g-4">
-                    {robes.map((robe, index) => (
-                        <div
-                            className="col-12 col-md-6 col-lg-4"
-                            key={index}
-                        >
-                            <RobeCard
-                                image={robe.image}
-                                title={robe.title}
-                                description={robe.description}
-                                price={robe.price}
-                            />
-                        </div>
+                <div className="catalog-toolbar">
+                    <div className="catalog-filters" role="group" aria-label="Категории мантий">
+                        {categories.map((category) => (
+                            <button key={category.id} type="button" aria-pressed={filter === category.id} className={filter === category.id ? 'is-active' : ''} onClick={() => setFilter(category.id)}>{category.label}</button>
+                        ))}
+                    </div>
+                    <span className="catalog-count" aria-live="polite">Моделей: {filteredRobes.length}</span>
+                </div>
+                <div className="catalog-grid">
+                    {filteredRobes.map((robe) => (
+                        <RobeCard key={robe.image} {...robe} onOrder={() => setSelectedRobe(robe)} />
                     ))}
                 </div>
-
+                <div className="catalog-bottom-note"><span aria-hidden="true">✳</span><p>Один шаг до вашего выпускного образа.<br /><strong>Выберите мантию и укажите размер в заказе.</strong></p><a href="#robes">Наверх ↑</a></div>
             </div>
-        </section>
+            {selectedRobe && <OrderModal robe={selectedRobe} onClose={() => setSelectedRobe(null)} />}
+        </main>
     )
 }
 

@@ -1,0 +1,9 @@
+.rental-order-modal .modal-content { background: var(--color-bg); color: var(--color-ink); padding: 8px; box-shadow: 0 24px 80px #203e3426; }
+.rental-order-modal .modal-title { font-family: Georgia, serif; font-size: 24px; font-weight: 400 !important; }
+.rental-order-modal .btn-success { background: var(--color-primary); border-color: var(--color-primary); }
+.rental-order-modal .btn-outline-secondary { color: var(--color-ink); border-color: var(--color-border); }
+.rental-order-modal .btn-outline-secondary:hover { background: #e9ede2; }
+.rental-order-modal .modal-footer { gap: 8px; }
+.rental-order-modal .modal-title { font-family: Arial, sans-serif; font-weight: 700 !important; }
+.rental-order-modal .btn-outline-secondary:hover { background: #efe9fe; }
+.rental-order-modal .btn-success:hover { background: #5623ad; border-color: #5623ad; }
