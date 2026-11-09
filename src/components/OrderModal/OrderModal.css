@@ -7,3 +7,7 @@
 .rental-order-modal .modal-title { font-family: Arial, sans-serif; font-weight: 700 !important; }
 .rental-order-modal .btn-outline-secondary:hover { background: #efe9fe; }
 .rental-order-modal .btn-success:hover { background: #5623ad; border-color: #5623ad; }
+.order-size-option { display: flex; flex-direction: column; align-items: stretch; gap: 8px; min-width: 82px; }
+.order-size-counter { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
+.order-size-counter button { width: 28px; height: 30px; padding: 0; border: 1px solid #e9e4f4; border-radius: 7px; background: #f4f1fb; color: #6d29e2; font-size: 18px; }
+.order-size-counter span { min-width: 20px; text-align: center; font-size: 13px; }

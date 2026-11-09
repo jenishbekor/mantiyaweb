@@ -26,7 +26,9 @@ function OrderModal({ robe, onClose }) {
         hex: COLOR_HEX[name],
     }))
 
-    const [size, setSize] = useState(sizes.length === 1 ? sizes[0] : null)
+    const [quantities, setQuantities] = useState(sizes.length === 1 ? { [sizes[0]]: 1 } : {})
+    const totalQuantity = Object.values(quantities).reduce((total, quantity) => total + quantity, 0)
+    const changeQuantity = (size, delta) => setQuantities(current => ({ ...current, [size]: Math.max(0, (current[size] || 0) + delta) }))
     const [color, setColor] = useState(colors.length === 1 ? colors[0] : null)
 
     useEffect(() => {
@@ -58,7 +60,14 @@ function OrderModal({ robe, onClose }) {
     }, [onClose])
 
     const handleSubmit = () => {
-        saveCart([...readCart(), { title: robe.title, image: robe.image, size, scarf: color.name }])
+        if (!color || !totalQuantity) return
+        const items = readCart()
+        Object.entries(quantities).filter(([, quantity]) => quantity > 0).forEach(([size, quantity]) => {
+            const existing = items.find(item => item.image === robe.image && item.size === size && item.scarf === color.name)
+            if (existing) existing.quantity += quantity
+            else items.push({ title: robe.title, image: robe.image, size, scarf: color.name, quantity })
+        })
+        saveCart(items)
         onClose()
     }
 
@@ -90,18 +99,25 @@ function OrderModal({ robe, onClose }) {
                                 style={{ maxHeight: '220px', objectFit: 'contain' }}
                             />
 
-                            <p className="fw-semibold mb-2">Размер</p>
+                            <p className="fw-semibold mb-2">Размеры и количество</p>
+                            <p className="text-muted small">Можно выбрать несколько размеров.</p>
                             <div className="d-flex flex-wrap gap-2 mb-4">
                                 {sizes.map((s) => (
+                                    <div key={s} className="order-size-option">
                                     <button
-                                        key={s}
                                         type="button"
-                                        className={`btn ${size === s ? 'btn-success' : 'btn-outline-secondary'}`}
-                                        onClick={() => setSize(s)}
-                                        aria-pressed={size === s}
+                                        className={`btn ${quantities[s] > 0 ? 'btn-success' : 'btn-outline-secondary'}`}
+                                        onClick={() => setQuantities(current => ({ ...current, [s]: current[s] > 0 ? 0 : 1 }))}
+                                        aria-pressed={quantities[s] > 0}
                                     >
                                         {s}
                                     </button>
+                                    {quantities[s] > 0 && <div className="order-size-counter" role="group" aria-label={`Количество размера ${s}`}>
+                                        <button type="button" onClick={() => changeQuantity(s, -1)} aria-label={`Уменьшить количество размера ${s}`}>−</button>
+                                        <span aria-live="polite">{quantities[s]}</span>
+                                        <button type="button" onClick={() => changeQuantity(s, 1)} aria-label={`Увеличить количество размера ${s}`}>+</button>
+                                    </div>}
+                                    </div>
                                 ))}
                             </div>
 
@@ -136,10 +152,10 @@ function OrderModal({ robe, onClose }) {
                                 Отмена
                             </Button>
                             <Button
-                                disabled={!size || !color}
+                                disabled={!totalQuantity || !color}
                                 onClick={handleSubmit}
                             >
-                                Добавить в корзину
+                                Добавить в корзину{totalQuantity > 0 ? ` · ${totalQuantity} шт.` : ''}
                             </Button>
                         </div>
                     </div>
