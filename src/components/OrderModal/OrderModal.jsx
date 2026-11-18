@@ -4,7 +4,7 @@ import './OrderModal.css'
 import { readCart, saveCart } from '../../cart'
 
 // размеры по умолчанию, если у мантии свой список не указан
-const SIZES = ['42', '44', '46', '48', '50', '52', '54', '56']
+const SIZES = ['42', '46', '50', '54']
 
 // все возможные цвета шарфа: название → цвет кружка
 const COLOR_HEX = {
@@ -20,6 +20,14 @@ const COLOR_HEX = {
 
 function OrderModal({ robe, onClose }) {
     const dialogRef = useRef(null)
+    const photos = [robe.image, ...(robe.images ?? []).filter(image => image !== robe.image)].map(image => '/mantii/' + image)
+    const [activePhoto, setActivePhoto] = useState(0)
+    const changePhoto = direction => setActivePhoto(current => (current + direction + photos.length) % photos.length)
+    useEffect(() => {
+        if (photos.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+        const timer = window.setTimeout(() => setActivePhoto(current => (current + 1) % photos.length), 5000)
+        return () => window.clearTimeout(timer)
+    }, [activePhoto, photos.length])
     const sizes = robe.sizes ?? SIZES
     const colors = (robe.scarfColors ?? Object.keys(COLOR_HEX)).map((name) => ({
         name,
@@ -92,12 +100,23 @@ function OrderModal({ robe, onClose }) {
                         </div>
 
                         <div className="modal-body">
-                            <img
-                                src={'/mantii/' + robe.image}
-                                alt={robe.title}
-                                className="img-fluid d-block mx-auto mb-4"
-                                style={{ maxHeight: '220px', objectFit: 'contain' }}
-                            />
+                            <div className="order-slideshow" role="region" aria-roledescription="карусель" aria-label="Фото мантии и выпускные образы" onKeyDown={event => {
+                                if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+                                    event.preventDefault()
+                                    changePhoto(event.key === 'ArrowLeft' ? -1 : 1)
+                                }
+                            }}>
+                                {photos.map((src, index) => (
+                                    <img key={src} src={src} alt={`${robe.title} — фото ${index + 1}`} className={'order-slide' + (activePhoto === index ? ' is-active' : '')} aria-hidden={activePhoto !== index} />
+                                ))}
+                                {photos.length > 1 && <>
+                                <button type="button" className="order-slide-arrow order-slide-prev" onClick={() => changePhoto(-1)} aria-label="Предыдущее фото">‹</button>
+                                <button type="button" className="order-slide-arrow order-slide-next" onClick={() => changePhoto(1)} aria-label="Следующее фото">›</button>
+                                <div className="order-slide-dots">
+                                    {photos.map((src, index) => <button key={src} type="button" className={activePhoto === index ? 'is-active' : ''} onClick={() => setActivePhoto(index)} aria-label={`Фото ${index + 1}`} aria-pressed={activePhoto === index} />)}
+                                </div>
+                                </>}
+                            </div>
 
                             <p className="fw-semibold mb-2">Размеры и количество</p>
                             <p className="text-muted small">Можно выбрать несколько размеров.</p>

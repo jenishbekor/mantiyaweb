@@ -2,8 +2,8 @@
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button/Button'
 import './Home.css'
+import { slideshowPhotos as photos } from '../../slideshow'
 
-const photos = ['/slideshow/mantiya1.png', '/slideshow/mantiya2.jpg', '/slideshow/mantiya3.jpg', '/slideshow/mantiya4.jpg', '/slideshow/mantiya5.JPG']
 const benefits = [ ['◇', 'Качественные мантии', 'Для вашего особенного дня'], ['◈', '500 сом / день', 'Прозрачная стоимость аренды'], ['↻', 'Большой выбор', 'Разные цвета и размеры'], ['✧', 'Для всех выпускников', 'Университет, школа и детский сад'] ]
 
 function Home() {

@@ -1,7 +1,8 @@
-﻿import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import HeaderIcon from './HeaderIcon'
-import { readCart, saveCart } from '../../cart'
+import { readCart } from '../../cart'
+
 import './Header.css'
 
 function Header() {
@@ -10,7 +11,7 @@ function Header() {
     const open = openPath === pathname
     const close = () => setOpenPath(null)
     const [cart, setCart] = useState(readCart)
-    const cartDialog = useRef(null)
+
     const cartQuantity = cart.reduce((total, item) => total + item.quantity, 0)
     useEffect(() => {
         const sync = () => setCart(readCart())
@@ -21,6 +22,7 @@ function Header() {
             window.removeEventListener('storage', sync)
         }
     }, [])
+
 
     return (
         <header className="site-header">
@@ -43,15 +45,10 @@ function Header() {
                     <NavLink to="/catalog" onClick={close}>Каталог</NavLink>
                     <NavLink to="/about" onClick={close}>О нас</NavLink>
                 </nav>
-                <button type="button" className="header-cart" onClick={() => cartDialog.current.showModal()} aria-label={`Корзина: ${cartQuantity}`}><HeaderIcon name="cart" /><b>{cartQuantity}</b></button>
+                <Link to="/cart" className="header-cart" onClick={close} aria-label={`Корзина: ${cartQuantity}`}><HeaderIcon name="cart" /><b>{cartQuantity}</b></Link>
             </div>
-            <dialog ref={cartDialog} className="header-cart-panel" aria-labelledby="cart-title" onClick={event => { if (event.target === event.currentTarget) cartDialog.current.close() }}>
-                <div className="header-cart-heading"><h2 id="cart-title">Ваша корзина</h2><button type="button" onClick={() => cartDialog.current.close()} aria-label="Закрыть корзину">×</button></div>
-                {cart.length === 0 ? <p>Ваша корзина пуста.</p> : <ul className="header-cart-items">{cart.map((item, index) => <li key={index}><img src={'/mantii/' + item.image} alt="" /><div><strong>{item.title}</strong><p>Размер {item.size} · {item.scarf} · {item.quantity} шт.</p><span>500 сом / день</span></div><button type="button" onClick={() => saveCart(cart.filter((_, i) => i !== index))} aria-label={`Удалить ${item.title}`}>×</button></li>)}</ul>}
-                <div className="header-cart-total"><strong>Итого за день</strong><strong>{cartQuantity * 500} сом</strong></div>
-                {cart.length > 0 && <a className="header-cart-checkout" href={'https://wa.me/996700437733?text=' + encodeURIComponent('Здравствуйте! Хочу арендовать мантии:\n' + cart.map(item => `${item.title}, размер ${item.size}, шарф: ${item.scarf}, ${item.quantity} шт.`).join('\n') + `\nИтого: ${cartQuantity * 500} сом / день`)} target="_blank" rel="noopener noreferrer">Оформить в WhatsApp →</a>}
-                <Link to="/catalog" onClick={() => cartDialog.current.close()}>Продолжить выбор →</Link>
-            </dialog>
+
+
         </header>
     )
 }

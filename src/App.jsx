@@ -5,12 +5,13 @@ import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Catalog from './pages/Catalog/Catalog'
+import Cart from './pages/Cart/Cart'
 import Button from './components/Button/Button'
 
 function RouteEffects() {
     const { pathname, hash } = useLocation()
     useEffect(() => {
-        const titles = { '/': 'Мантия на прокат', '/catalog': 'Коллекция мантий', '/about': 'О нас — Мантия' }
+        const titles = { '/': 'Мантия на прокат', '/catalog': 'Коллекция мантий', '/about': 'О нас — Мантия', '/cart': 'Корзина — Мантия' }
         document.title = titles[pathname] ?? 'Страница не найдена — Мантия'
         if (hash) document.getElementById(hash.slice(1))?.scrollIntoView()
         else window.scrollTo(0, 0)
@@ -28,6 +29,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/catalog" element={<Catalog />} />
+                <Route path="/cart" element={<Cart />} />
                 <Route path="/about" element={<About />} />
                 <Route path="*" element={<main className="container not-found"><span className="home-eyebrow">404</span><h1>Эта страница не найдена</h1><p>Продолжите знакомство с нашей коллекцией.</p><Button to="/catalog">Открыть каталог ↗</Button></main>} />
             </Routes>

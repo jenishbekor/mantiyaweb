@@ -8,12 +8,46 @@ function Catalog() {
     const [filter, setFilter] = useState('all')
     const robes = [
         {
-            image: 'blue_with_yellow.png',
-            title: 'Синяя с золотой полоской',
+            image: '1_burgundy_a/burgundy_with_yellow.png',
+            images: ['1_burgundy_a/burgundy_with_yellow.png',
+                '1_burgundy_a/burgundy_with_yellow1.JPG',
+                '1_burgundy_a/burgundy_with_yellow2.JPG',
+                '1_burgundy_a/burgundy_with_yellow3.JPG',
+                '1_burgundy_a/burgundy_with_yellow4.JPG',
+                '1_burgundy_a/burgundy_with_yellow5.JPG',
+                '1_burgundy_a/burgundy_with_yellow6.JPG',
+                '1_burgundy_a/burgundy_with_yellow7.JPG',
+                '1_burgundy_a/burgundy_with_yellow8.JPG',
+                '1_burgundy_a/burgundy_with_yellow9.JPG',
+                '1_burgundy_a/burgundy_with_yellow10.JPG',
+                '1_burgundy_a/burgundy_with_yellow11.JPG',
+                '1_burgundy_a/burgundy_with_yellow12.JPG',
+                '1_burgundy_a/burgundy_with_yellow13.JPG',
+                '1_burgundy_a/burgundy_with_yellow14.JPG',
+                '1_burgundy_a/burgundy_with_yellow15.JPG',
+                '1_burgundy_a/burgundy_with_yellow16.JPG',
+                '1_burgundy_a/burgundy_with_yellow17.JPG'],
+            title: 'Бардовая с желтым',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день',
-            sizes: ['44', '46', '48', '50'],
-            scarfColors: ['Золотой', 'Жёлтый']
+            scarfColors: ['Золотой' ]
+        },
+        {
+            image: 'dark_blue_with_blue/dark_bblue3.JPG',
+            images: ['dark_blue_with_blue/dark_bblue2.JPG',
+                    'dark_blue_with_blue/dark_bblue1.JPG',
+                    'dark_blue_with_blue/dark_bblue4.JPG'],
+            title: 'Темно синяя с голубым',
+            description: 'Премиальная модель с аккуратной декоративной отделкой.',
+            price: '500 сом / день',
+            scarfColors: ['Зелёный']
+        },
+        {
+            image: 'black_with_green.png',
+            title: 'Черная с зеленым',
+            description: 'Премиальная модель с аккуратной декоративной отделкой.',
+            price: '500 сом / день',
+            scarfColors: ['Зелёный']
         },
         {
             image: 'dark_blue_with_s_yellow.png',
@@ -30,8 +64,17 @@ function Catalog() {
             scarfColors: ['Золотой', 'Жёлтый']
         },
         {
+            image: 'blue_with_yellow.png',
+            // Дополнительные фото из public/mantii: images: ['photo2.jpg', 'photo3.jpg']
+            images: [],
+            title: 'Синяя с золотой полоской',
+            description: 'Премиальная модель с аккуратной декоративной отделкой.',
+            price: '500 сом / день',
+            scarfColors: ['Золотой', 'Жёлтый']
+        },
+        {
             image: 'dark_blue_with_yellow.png',
-            title: 'Темно синяя c желтыми полосками',
+            title: 'Синяя c желтыми полосками',
             description: 'Классическая мантия с синей отделкой.',
             price: '500 сом / день',
             scarfColors: ['Золотой', 'Жёлтый']
@@ -61,19 +104,14 @@ function Catalog() {
             price: '500 сом / день'
         },
         {
-            image: 'burgundy_with_yellow.png',
-            title: 'Бардовая с желтым',
-            description: 'Премиальная модель с аккуратной декоративной отделкой.',
-            price: '500 сом / день'
-        },
-        {
             image: 'burgundy_with_white.png',
             title: 'Бардовая с белым',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
         },
         {
-            image: 'green.png',
+            image: 'izumrudy/izymrud1.JPG',
+            images: ['izumrudy/izymrud2.JPG'],
             title: 'Изумрудная с золотым',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
@@ -111,12 +149,6 @@ function Catalog() {
         {
             image: 'black_with_purple.png',
             title: 'Черная с фиолетовым',
-            description: 'Премиальная модель с аккуратной декоративной отделкой.',
-            price: '500 сом / день'
-        },
-        {
-            image: 'black_with_green.png',
-            title: 'Черная с зеленым',
             description: 'Премиальная модель с аккуратной декоративной отделкой.',
             price: '500 сом / день'
         },

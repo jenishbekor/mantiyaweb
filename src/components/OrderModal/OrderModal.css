@@ -11,3 +11,14 @@
 .order-size-counter { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
 .order-size-counter button { width: 28px; height: 30px; padding: 0; border: 1px solid #e9e4f4; border-radius: 7px; background: #f4f1fb; color: #6d29e2; font-size: 18px; }
 .order-size-counter span { min-width: 20px; text-align: center; font-size: 13px; }
+.order-slideshow { position: relative; height: 260px; margin-bottom: 24px; overflow: hidden; border-radius: 14px; background: #f4f1fb; }
+.order-slide { position: absolute; inset: 0; width: 100%; height: 100%; padding: 12px 38px 30px; object-fit: contain; opacity: 0; transition: opacity .5s; }
+.order-slide.is-active { opacity: 1; }
+.order-slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 30px; height: 30px; padding: 0 0 2px; border: 0; border-radius: 50%; background: #fffffff0; color: #6d29e2; box-shadow: 0 2px 8px #17172118; font-size: 24px; line-height: 1; cursor: pointer; }
+.order-slide-prev { left: 8px; }
+.order-slide-next { right: 8px; }
+.order-slide-arrow:hover { background: #6d29e2; color: white; }
+.order-slide-dots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 7px; }
+.order-slide-dots button { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 20px; background: #c5b9db; cursor: pointer; }
+.order-slide-dots button.is-active { width: 20px; background: #6d29e2; }
+@media (prefers-reduced-motion: reduce) { .order-slide { transition: none; } }
