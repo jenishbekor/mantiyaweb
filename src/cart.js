@@ -1,3 +1,19 @@
+import robes from './data/mantiya_data.json'
+
+export function sizesForRobe(image) {
+    return Object.keys(robes.find(robe => robe.image === image)?.stock ?? {})
+}
+
+export function stockForSize(image, size, date) {
+    const robe = robes.find(robe => robe.image === image)
+    const stock = robe?.stockByDate?.[date]?.[size] ?? robe?.stock?.[size]
+    return Number.isSafeInteger(stock) && stock >= 0 ? stock : 0
+}
+
+export function quantityInCart(items, image, size, date) {
+    return items.filter(item => item.image === image && item.size === size && item.date === date).reduce((total, item) => total + item.quantity, 0)
+}
+
 export function readCart() {
     try {
         const items = JSON.parse(localStorage.getItem('mantiya-cart') || '[]')

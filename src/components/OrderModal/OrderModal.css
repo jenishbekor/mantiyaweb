@@ -7,10 +7,13 @@
 .rental-order-modal .modal-title { font-family: Arial, sans-serif; font-weight: 700 !important; }
 .rental-order-modal .btn-outline-secondary:hover { background: #efe9fe; }
 .rental-order-modal .btn-success:hover { background: #5623ad; border-color: #5623ad; }
-.order-size-option { display: flex; flex-direction: column; align-items: stretch; gap: 8px; min-width: 82px; }
+.order-sizes { display: grid; gap: 8px; }
+.order-size-option { display: grid; grid-template-columns: 64px 1fr auto; align-items: center; gap: 12px; }
+.order-size-option small { color: #666174; }
 .order-size-counter { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
 .order-size-counter button { width: 28px; height: 30px; padding: 0; border: 1px solid #e9e4f4; border-radius: 7px; background: #f4f1fb; color: #6d29e2; font-size: 18px; }
 .order-size-counter span { min-width: 20px; text-align: center; font-size: 13px; }
+.order-size-counter button:disabled { opacity: .4; cursor: not-allowed; }
 .order-slideshow { position: relative; height: 260px; margin-bottom: 24px; overflow: hidden; border-radius: 14px; background: #f4f1fb; }
 .order-slide { position: absolute; inset: 0; width: 100%; height: 100%; padding: 12px 38px 30px; object-fit: contain; opacity: 0; transition: opacity .5s; }
 .order-slide.is-active { opacity: 1; }

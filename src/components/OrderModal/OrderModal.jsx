@@ -1,10 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Button from '../Button/Button'
 import './OrderModal.css'
-import { readCart, saveCart } from '../../cart'
-
-// размеры по умолчанию, если у мантии свой список не указан
-const SIZES = ['42', '46', '50', '54']
+import { readCart, saveCart, stockForSize, quantityInCart } from '../../cart'
 
 // все возможные цвета шарфа: название → цвет кружка
 const COLOR_HEX = {
@@ -28,15 +25,18 @@ function OrderModal({ robe, onClose }) {
         const timer = window.setTimeout(() => setActivePhoto(current => (current + 1) % photos.length), 5000)
         return () => window.clearTimeout(timer)
     }, [activePhoto, photos.length])
-    const sizes = robe.sizes ?? SIZES
+    const sizes = Object.keys(robe.stock)
     const colors = (robe.scarfColors ?? Object.keys(COLOR_HEX)).map((name) => ({
         name,
         hex: COLOR_HEX[name],
     }))
 
-    const [quantities, setQuantities] = useState(sizes.length === 1 ? { [sizes[0]]: 1 } : {})
+    const [date, setDate] = useState('')
+    const today = new Date().toLocaleDateString('en-CA')
+    const [quantities, setQuantities] = useState({})
     const totalQuantity = Object.values(quantities).reduce((total, quantity) => total + quantity, 0)
-    const changeQuantity = (size, delta) => setQuantities(current => ({ ...current, [size]: Math.max(0, (current[size] || 0) + delta) }))
+    const available = size => date ? Math.max(0, stockForSize(robe.image, size, date) - quantityInCart(readCart(), robe.image, size, date)) : 0
+    const changeQuantity = (size, delta) => setQuantities(current => ({ ...current, [size]: Math.min(available(size), Math.max(0, (current[size] || 0) + delta)) }))
     const [color, setColor] = useState(colors.length === 1 ? colors[0] : null)
 
     useEffect(() => {
@@ -68,12 +68,14 @@ function OrderModal({ robe, onClose }) {
     }, [onClose])
 
     const handleSubmit = () => {
-        if (!color || !totalQuantity) return
+        if (!date || !color || !totalQuantity) return
         const items = readCart()
         Object.entries(quantities).filter(([, quantity]) => quantity > 0).forEach(([size, quantity]) => {
-            const existing = items.find(item => item.image === robe.image && item.size === size && item.scarf === color.name)
-            if (existing) existing.quantity += quantity
-            else items.push({ title: robe.title, image: robe.image, size, scarf: color.name, quantity })
+            const allowed = Math.min(quantity, Math.max(0, stockForSize(robe.image, size, date) - quantityInCart(items, robe.image, size, date)))
+            if (!allowed) return
+            const existing = items.find(item => item.image === robe.image && item.size === size && item.scarf === color.name && item.date === date)
+            if (existing) existing.quantity += allowed
+            else items.push({ title: robe.title, image: robe.image, size, scarf: color.name, date, quantity: allowed })
         })
         saveCart(items)
         onClose()
@@ -118,24 +120,28 @@ function OrderModal({ robe, onClose }) {
                                 </>}
                             </div>
 
+                            <label className="fw-semibold mb-2" htmlFor="rental-date">Дата аренды</label>
+                            <input id="rental-date" className="form-control mb-4" type="date" min={today} value={date} onChange={event => { setDate(event.target.value); setQuantities({}) }} />
                             <p className="fw-semibold mb-2">Размеры и количество</p>
                             <p className="text-muted small">Можно выбрать несколько размеров.</p>
-                            <div className="d-flex flex-wrap gap-2 mb-4">
+                            <div className="order-sizes mb-4">
                                 {sizes.map((s) => (
                                     <div key={s} className="order-size-option">
                                     <button
                                         type="button"
                                         className={`btn ${quantities[s] > 0 ? 'btn-success' : 'btn-outline-secondary'}`}
                                         onClick={() => setQuantities(current => ({ ...current, [s]: current[s] > 0 ? 0 : 1 }))}
+                                        disabled={available(s) === 0 && !quantities[s]}
                                         aria-pressed={quantities[s] > 0}
                                     >
                                         {s}
                                     </button>
-                                    {quantities[s] > 0 && <div className="order-size-counter" role="group" aria-label={`Количество размера ${s}`}>
-                                        <button type="button" onClick={() => changeQuantity(s, -1)} aria-label={`Уменьшить количество размера ${s}`}>−</button>
-                                        <span aria-live="polite">{quantities[s]}</span>
-                                        <button type="button" onClick={() => changeQuantity(s, 1)} aria-label={`Увеличить количество размера ${s}`}>+</button>
-                                    </div>}
+                                    <small>{date ? `Доступно: ${available(s)} шт.` : 'Выберите дату'}</small>
+                                    <div className="order-size-counter" role="group" aria-label={`Количество размера ${s}`}>
+                                        <button type="button" onClick={() => changeQuantity(s, -1)} disabled={!quantities[s]} aria-label={`Уменьшить количество размера ${s}`}>−</button>
+                                        <span aria-live="polite">{quantities[s] || 0}</span>
+                                        <button type="button" onClick={() => changeQuantity(s, 1)} disabled={(quantities[s] || 0) >= available(s)} aria-label={`Увеличить количество размера ${s}`}>+</button>
+                                    </div>
                                     </div>
                                 ))}
                             </div>
@@ -171,7 +177,7 @@ function OrderModal({ robe, onClose }) {
                                 Отмена
                             </Button>
                             <Button
-                                disabled={!totalQuantity || !color}
+                                disabled={!date || !totalQuantity || !color}
                                 onClick={handleSubmit}
                             >
                                 Добавить в корзину{totalQuantity > 0 ? ` · ${totalQuantity} шт.` : ''}
